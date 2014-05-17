@@ -92,9 +92,6 @@ public class DownloadThread implements Runnable {
 
     private volatile boolean mPolicyDirty;
 
-    // Add for carrier feature - download breakpoint continuing.
-    // Support continuing download after the download is broken
-    // although HTTP Server doesn't contain etag in its response.
     private final static String QRD_ETAG = "qrd_magic_etag";
 
     public DownloadThread(Context context, SystemFacade systemFacade, DownloadInfo info,
@@ -527,9 +524,8 @@ public class DownloadThread implements Runnable {
             if (mInfo.mStatus == Downloads.Impl.STATUS_CANCELED || mInfo.mDeleted) {
                 throw new StopRequestException(Downloads.Impl.STATUS_CANCELED, "download canceled");
             }
-
             if (mInfo.mStatus == Downloads.Impl.STATUS_PAUSED_BY_MANUAL) {
-                // user pauses the download by manual, here send exception and stop data transfer.
+                // user pauses the download by manual, here send exception and stop the request.
                 throw new StopRequestException(Downloads.Impl.STATUS_PAUSED_BY_MANUAL, "download paused by manual");
             }
         }
