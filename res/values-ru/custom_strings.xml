@@ -33,20 +33,4 @@
     <string name="download_pause_all">Приостановить все</string>
     <string name="download_retry_all">Повторить все</string>
 
-    <!-- Phrase describing a time duration using seconds [CHAR LIMIT=16] -->
-    <plurals name="duration_seconds">
-         <item quantity="one"><xliff:g id="count">%d</xliff:g> сек</item>
-         <item quantity="other"><xliff:g id="count">%d</xliff:g> сек</item>
-    </plurals>
-    <!-- Phrase describing a time duration using minutes [CHAR LIMIT=16] -->
-    <plurals name="duration_minutes">
-         <item quantity="one"><xliff:g id="count">%d</xliff:g> мин</item>
-         <item quantity="other"><xliff:g id="count">%d</xliff:g> мин</item>
-    </plurals>
-    <!-- Phrase describing a time duration using hours [CHAR LIMIT=16] -->
-    <plurals name="duration_hours">
-         <item quantity="one"><xliff:g id="count">%d</xliff:g> ч</item>
-         <item quantity="other"><xliff:g id="count">%d</xliff:g> ч</item>
-    </plurals>
-
 </resources>
