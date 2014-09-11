@@ -178,6 +178,16 @@ public class DownloadNotifier {
                  }
             }
 
+            // Check error status about downloads. If error exists, will
+            // update icon and content title/content text in notification.
+            boolean hasErrorStatus = false;
+            for (DownloadInfo info : cluster) {
+                if (isErrorStatus(info.mStatus)) {
+                    hasErrorStatus = true;
+                    break;
+                }
+            }
+
             // Show relevant icon
             if (type == TYPE_ACTIVE) {
                 if (hasErrorStatus) {
@@ -238,9 +248,10 @@ public class DownloadNotifier {
             String durationText = null;
             String percentText = null;
             String speedText = null;
+            String speedAsSizeText = null;
+            long total = 0;
             if (type == TYPE_ACTIVE) {
                 long current = 0;
-                long total = 0;
                 long speed = 0;
                 synchronized (mDownloadSpeed) {
                     for (DownloadInfo info : cluster) {
